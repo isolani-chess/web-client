@@ -12,11 +12,13 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <web-chess-client-app>Loading...</web-chess-client-app>
+  <app-root>Loading...</app-root>
 
   
 
-    {{#each scripts.polyfills}}<script src="{{.}}"></script>{{/each}}
+    {{#each scripts.polyfills}}
+    <script src="{{.}}"></script>
+    {{/each}}
     <script>
       System.import('system-config.js').then(function () {
         System.import('main');
@@ -24,8 +26,6 @@
     </script>
 
   
-
-
 
 </body>
 </html>

@@ -1,2 +1,2 @@
 export * from './environment';
-export * from './web-chess-client.component';
+export * from './app.component';

@@ -4,6 +4,6 @@ export class WebChessClientPage {
   }
 
   getParagraphText() {
-    return element(by.css('web-chess-client-app h1')).getText();
+    return element(by.css('app-root h1')).getText();
   }
 }
