@@ -7,10 +7,14 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  'chess-es6.js': 'vendor/chess-es6.js/lib'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  'chess-es6.js': {
+    defaultExtension: 'js'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,6 +37,7 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
+  'app/chess/shared'
   /** @cli-barrel */
 ];
 
