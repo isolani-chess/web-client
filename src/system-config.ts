@@ -7,6 +7,7 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  '@ngrx': 'vendor/@ngrx',
   'chess-es6.js': 'vendor/chess-es6.js/lib'
 };
 
@@ -14,6 +15,14 @@ const map: any = {
 const packages: any = {
   'chess-es6.js': {
     defaultExtension: 'js'
+  },
+  '@ngrx/core': {
+    main: 'index.js',
+    format: 'cjs'
+  },
+  '@ngrx/store': {
+    main: 'index.js',
+    format: 'cjs'
   }
 };
 
