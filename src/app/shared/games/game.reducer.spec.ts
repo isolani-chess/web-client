@@ -9,7 +9,9 @@ import {
 import { game,
          ADD_GAME,
          REMOVE_GAME,
-         CHANGE_GAME_OWNER
+         CHANGE_GAME_OWNER,
+         ADD_GAME_TAG,
+         REMOVE_GAME_TAG
        } from './game.reducer';
 import { Game } from './game.ts';
 
@@ -79,6 +81,118 @@ describe('game reducer', () => {
     expect(game(state, {
       type: CHANGE_GAME_OWNER,
       payload: {id: 1, ownerId: 5}
+    })).toEqual(expected);
+  });
+  it('should add tags', () => {
+    const state: Game[] = [
+      {
+        id: 1,
+        ownerId: 2
+      },
+      {
+        id: 2,
+        ownerId: 5
+      }
+    ];
+    const expected: Game[] = [
+      {
+        id: 1,
+        ownerId: 2
+      },
+      {
+        id: 2,
+        ownerId: 5,
+        tags: [12]
+      }
+    ];
+    expect(game(state, {
+      type: ADD_GAME_TAG,
+      payload: {
+        id: 2,
+        tag: 12
+      }
+    })).toEqual(expected);
+    const state2: Game[] = [
+      {
+        id: 1,
+        ownerId: 2,
+        tags: [11, 19]
+      },
+      {
+        id: 2,
+        ownerId: 5
+      }
+    ];
+    const expected2: Game[] = [
+      {
+        id: 1,
+        ownerId: 2,
+        tags: [11, 19, 2]
+      },
+      {
+        id: 2,
+        ownerId: 5
+      }
+    ];
+    expect(game(state2, {
+      type: ADD_GAME_TAG,
+      payload: {
+        id: 1,
+        tag: 2
+      }
+    })).toEqual(expected2);
+  });
+  it('should remove tags', () => {
+    const state: Game[] = [
+      {
+        id: 1,
+        ownerId: 2,
+        tags: [12]
+      },
+      {
+        id: 2,
+        ownerId: 5,
+        tags: [12, 13]
+      }
+    ];
+    const expectedFirst: Game[] = [
+      {
+        id: 1,
+        ownerId: 2,
+        tags: [12]
+      },
+      {
+        id: 2,
+        ownerId: 5,
+        tags: [13]
+      }
+    ];
+    const expected: Game[] = [
+      {
+        id: 1,
+        ownerId: 2
+      },
+      {
+        id: 2,
+        ownerId: 5,
+        tags: [13]
+      }
+    ];
+    const newState = game(state, {
+      type: REMOVE_GAME_TAG,
+      payload: {
+        id: 2,
+        tag: 12
+      }
+    });
+    expect(newState).toEqual(expectedFirst);
+
+    expect(game(newState, {
+      type: REMOVE_GAME_TAG,
+      payload: {
+        id: 1,
+        tag: 12
+      }
     })).toEqual(expected);
   });
 });
