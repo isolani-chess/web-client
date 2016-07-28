@@ -29,7 +29,7 @@ export class ChessService {
 
   getDests(): any {
     let dests = this.chess.moves({onlyAlgebraicSquares: true});
-    let splitDests = dests.map((move) => { return move.split('-'); });
+    let splitDests = dests.map(move => move.split('-'));
     let ret = {};
     let move;
 

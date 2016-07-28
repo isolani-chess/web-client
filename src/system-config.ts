@@ -7,6 +7,7 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  '@angular2-material': 'vendor/@angular2-material',
   '@ngrx': 'vendor/@ngrx',
   'chess-es6.js': 'vendor/chess-es6.js/lib'
 };
@@ -23,8 +24,36 @@ const packages: any = {
   '@ngrx/store': {
     main: 'index.js',
     format: 'cjs'
+  },
+  '@ngrx/effects': {
+    main: 'index.js',
+    format: 'cjs'
+  },
+  '@ngrx/store-log-monitor': {
+    main: 'index.js',
+    format: 'cjs'
+  },
+  '@ngrx/store-devtools': {
+    main: 'index.js',
+    format: 'cjs'
   }
 };
+
+const materialPkgs:string[] = [
+  'card',
+  'core',
+  'button',
+  'icon',
+  'input',
+  'list',
+  'sidenav',
+  'tabs',
+  'toolbar'
+];
+
+materialPkgs.forEach((pkg) => {
+  packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
+});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
@@ -46,7 +75,11 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
-  'app/chess/shared'
+  'app/chess/shared',
+  'app/tags/tag-list',
+  'app/tags/add-tag',
+  'app/games/game-list',
+  'app/games/add-game',
   /** @cli-barrel */
 ];
 

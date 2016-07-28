@@ -1,3 +1,42 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-layout fullscreen>
+  <md-sidenav id="startSideNav" align="start" mode="side" #startSideNav>
+    Hello! I'm the sidebar.
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="startSideNav.toggle()">
+      <md-icon class="md-24">menu</md-icon>
+    </button>
+    <span>IsolaniChess</span>
+  </md-toolbar>
+  <md-tab-group>
+    <md-tab>
+      <template md-tab-label>Dashboard</template>
+      <template md-tab-content>
+        <md-card>
+          <md-card-title>Games</md-card-title>
+          <md-card-content>
+            <app-game-list [games]="games$ | async"></app-game-list>
+            <app-add-game (addGame)="onAddGame()"></app-add-game>
+          </md-card-content>
+          <md-card-card-actions>
+            <button md-button>MORE</button>
+          </md-card-card-actions>
+        </md-card>
+        <md-card>
+          <md-card-title>Tags</md-card-title>
+          <md-card-content>
+            <app-tag-list [tags]="tags$ | async"></app-tag-list>
+            <app-add-tag (addTag)="onAddTag($event)"></app-add-tag>
+          </md-card-content>
+          <md-card-card-actions>
+            <button md-button>MORE</button>
+          </md-card-card-actions>
+        </md-card>
+      </template>
+    </md-tab>
+    <md-tab>
+      <template md-tab-label>Game 2</template>
+      <template md-tab-content>I'm the second one.</template>
+    </md-tab>
+  </md-tab-group>
+</md-sidenav-layout>

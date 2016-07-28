@@ -10,6 +10,7 @@ export const ADD_TAG = 'ADD_TAG';
 export const REMOVE_TAG = 'REMOVE_TAG';
 export const CHANGE_TAG_OWNER = 'CHANGE_TAG_OWNER';
 export const CHANGE_TAG_NAME = 'CHANGE_TAG_NAME';
+export const REPLACE_TAGS = 'REPLACE_TAGS';
 
 export function tags(state: TagState = {
                         isFetching: false,
@@ -30,6 +31,10 @@ export function tags(state: TagState = {
       tags: tagList(state.tags, action)
     });
   case CHANGE_TAG_NAME:
+    return Object.assign({}, state, {
+      tags: tagList(state.tags, action)
+    });
+  case REPLACE_TAGS:
     return Object.assign({}, state, {
       tags: tagList(state.tags, action)
     });
@@ -66,6 +71,8 @@ function tagList(state: Tag[], action: Action): Tag[] {
       }
       return tag;
     });
+  case REPLACE_TAGS:
+    return action.payload;
   default:
     return state;
   }
