@@ -22,10 +22,13 @@
             <button md-button>MORE</button>
           </md-card-card-actions>
         </md-card>
-        <md-card>
+        <md-card style="width: 600px; margin: 16px;">
           <md-card-title>Tags</md-card-title>
           <md-card-content>
-            <app-tag-list [tags]="tags$ | async"></app-tag-list>
+            <app-tag-list [tags]="tags$ | async"
+                          (deleteTag)="onDeleteTag($event)"
+                          (changeTagName)="onChangeTagName($event)">
+            </app-tag-list>
             <app-add-tag (addTag)="onAddTag($event)"></app-add-tag>
           </md-card-content>
           <md-card-card-actions>

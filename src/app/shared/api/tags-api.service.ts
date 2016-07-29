@@ -16,4 +16,14 @@ export class TagsApiService {
     }));
   }
 
+  remove(id: any) {
+    return this.tags.remove(id);
+  }
+
+  changeName(id: any, name: string) {
+    return this.tags.update({
+      id: id,
+      name: name
+    });
+  }
 }

@@ -80,6 +80,7 @@ const barrels: string[] = [
   'app/tags/add-tag',
   'app/games/game-list',
   'app/games/add-game',
+  'app/tags/tag-item',
   /** @cli-barrel */
 ];
 

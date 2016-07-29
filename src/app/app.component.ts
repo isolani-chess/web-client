@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Rx';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
-import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
 import { MD_TABS_DIRECTIVES } from '@angular2-material/tabs';
 
@@ -19,6 +18,8 @@ import { AppState,
          HorizonService,
          REPLACE_TAGS,
          ADD_TAG,
+         REMOVE_TAG,
+         CHANGE_TAG_NAME,
          ADD_GAME
        } from './shared';
 
@@ -32,7 +33,6 @@ import { AppState,
     MD_BUTTON_DIRECTIVES,
     MD_CARD_DIRECTIVES,
     MdIcon,
-    MD_LIST_DIRECTIVES,
     MD_SIDENAV_DIRECTIVES,
     MD_TABS_DIRECTIVES,
     TagListComponent,
@@ -76,6 +76,20 @@ export class AppComponent {
       payload: {
         owner_id: 1
       }
+    });
+  }
+
+  onDeleteTag(tag) {
+    this.store.dispatch({
+      type: REMOVE_TAG,
+      payload: tag.id
+    });
+  }
+
+  onChangeTagName(change) {
+    this.store.dispatch({
+      type: CHANGE_TAG_NAME,
+      payload: change
     });
   }
 }
