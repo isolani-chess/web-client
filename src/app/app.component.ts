@@ -14,8 +14,6 @@ import { GameListComponent } from './games/game-list';
 import { AddGameComponent } from './games/add-game';
 import { AppState,
          TagsApiService,
-         TagEffectsService,
-         HorizonService,
          REPLACE_TAGS,
          ADD_TAG,
          REMOVE_TAG,
@@ -24,10 +22,9 @@ import { AppState,
        } from './shared';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'],
+  styleUrls: ['app.component.scss'],
   directives: [
     StoreLogMonitorComponent,
     MD_BUTTON_DIRECTIVES,
@@ -57,7 +54,7 @@ export class AppComponent {
         type: REPLACE_TAGS,
         payload: tags
       });
-    })
+    });
   }
 
   onAddTag(tagName) {

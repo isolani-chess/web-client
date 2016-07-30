@@ -1,12 +1,9 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { Game } from '../../shared';
-
 @Component({
-  moduleId: module.id,
   selector: 'app-game-list',
   templateUrl: 'game-list.component.html',
-  styleUrls: ['game-list.component.css'],
+  styleUrls: ['game-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GameListComponent {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-declare var Horizon: any;
+const Horizon = require('@horizon/client/lib');
 
 @Injectable()
 export class HorizonService {

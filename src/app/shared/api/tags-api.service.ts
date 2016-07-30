@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { HorizonService } from '../.';
+// This is necessary to circumvent a strange bug concerning barrels
+// TODO: move to collective import eventually
+import { HorizonService } from '../api/horizon.service';
 
 @Injectable()
 export class TagsApiService {

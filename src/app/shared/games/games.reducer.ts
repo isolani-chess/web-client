@@ -29,7 +29,7 @@ export function games(state: GameState = {
     return Object.assign({}, state, {
       isFetching: false,
       games: gameList(state.games, action)
-    })
+    });
   case ADD_GAME:
     return Object.assign({}, state, {
       games: gameList(state.games, action)
@@ -138,7 +138,7 @@ function gameDetail(state: Game, action: Action): Game {
     if (action.payload.setId) {
       state = Object.assign({}, state, {id: action.payload.setId});
     }
-    return Object.assign({}, state, {unsavedChanges: false})
+    return Object.assign({}, state, {unsavedChanges: false});
   default:
     return state;
   }

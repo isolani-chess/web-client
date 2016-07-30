@@ -4,10 +4,9 @@ import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 import { MdIcon } from '@angular2-material/icon';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-tag-item',
   templateUrl: 'tag-item.component.html',
-  styleUrls: ['tag-item.component.css'],
+  styleUrls: ['tag-item.component.scss'],
   directives: [
     MD_INPUT_DIRECTIVES,
     MD_LIST_DIRECTIVES,

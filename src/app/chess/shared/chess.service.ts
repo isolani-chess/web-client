@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Chess } from 'chess-es6.js/chess';
-import { Flags } from 'chess-es6.js/flags';
 import { Move } from 'chess-es6.js/move';
 import { PieceType } from 'chess-es6.js/piece_type';
-import { Piece } from 'chess-es6.js/piece';
-import { Color } from 'chess-es6.js/color';
 
 import { chess2groundPieceType, chess2groundColor } from './.';
 
@@ -44,12 +41,16 @@ export class ChessService {
   }
 
   getFullTurnColor(): string {
-    if (this.whitesTurn()) return 'white';
+    if (this.whitesTurn()) {
+      return 'white';
+    }
     return 'black';
   }
 
   getFullNotTurnColor(): string {
-    if (!this.whitesTurn()) return 'white';
+    if (!this.whitesTurn()) {
+      return 'white';
+    }
     return 'black';
   }
 

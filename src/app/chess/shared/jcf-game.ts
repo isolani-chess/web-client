@@ -1,13 +1,13 @@
 export interface JCFGame {
   meta?: any;
-  moves: JCFMove[]
+  moves: JCFMove[];
 }
 
 export interface JCFMove {
   from: string;
   to: string;
   promotion?: string;
-  variations?: Array<JCFMove[]>
+  variations?: Array<JCFMove[]>;
   comment?: string;
   NAGs?: number[];
 }

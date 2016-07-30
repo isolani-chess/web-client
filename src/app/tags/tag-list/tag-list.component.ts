@@ -4,10 +4,9 @@ import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 import { TagItemComponent } from '../tag-item';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-tag-list',
   templateUrl: 'tag-list.component.html',
-  styleUrls: ['tag-list.component.css'],
+  styleUrls: ['tag-list.component.scss'],
   directives: [
     MD_LIST_DIRECTIVES,
     TagItemComponent
