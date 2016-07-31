@@ -45,7 +45,7 @@
     "@ngrx/store-log-monitor": "^2.0.0-beta.1",
     "@types/jasmine": "^2.2.30",
     "@types/protractor": "^1.5.16",
-    "angular-cli": "^1.0.0-beta.10",
+    "angular-cli": "github:angular/angular-cli",
     "codelyzer": "0.0.26",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
