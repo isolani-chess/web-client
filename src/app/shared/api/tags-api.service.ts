@@ -14,7 +14,7 @@ export class TagsApiService {
 
   store(tag: any) {
     return this.tags.store(Object.assign({}, tag, {
-      createdAt: new Date()
+      created_at: new Date()
     }));
   }
 

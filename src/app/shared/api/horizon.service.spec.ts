@@ -1,17 +1,14 @@
 /* tslint:disable:no-unused-variable */
 
-import {
-  beforeEach, beforeEachProviders,
-  describe, xdescribe,
-  expect, it, xit,
-  async, inject
-} from '@angular/core/testing';
+import { addProviders, async, inject } from '@angular/core/testing';
 import { HorizonService } from './horizon.service';
 
 describe('Horizon Service', () => {
-  beforeEachProviders(() => [HorizonService]);
+  beforeEach(() => {
+    addProviders([HorizonService]);
+  });
 
-  it('should ...',
+  it('should be created',
       inject([HorizonService], (service: HorizonService) => {
     expect(service).toBeTruthy();
   }));

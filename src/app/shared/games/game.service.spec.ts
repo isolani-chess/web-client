@@ -1,17 +1,17 @@
 /* tslint:disable:no-unused-variable */
 
-import {
-  beforeEach, beforeEachProviders,
-  describe, xdescribe,
-  expect, it, xit,
-  async, inject
-} from '@angular/core/testing';
+import { addProviders, async, inject } from '@angular/core/testing';
 import { GameService } from './game.service';
+import { ChessService } from '../../chess/shared/chess.service';
 
 describe('Game Service', () => {
-  beforeEachProviders(() => [GameService]);
+  beforeEach(() => {
+    addProviders([GameService,
+                  ChessService
+                 ]);
+  });
 
-  it('should ...',
+  xit('should ...',
       inject([GameService], (service: GameService) => {
     expect(service).toBeTruthy();
   }));
