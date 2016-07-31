@@ -1,0 +1,19 @@
+<md-list-item>
+<span *ngIf="!editMode">{{tag.name}}</span>
+<md-input *ngIf="editMode" #newName value="{{tag.name}}">
+  <md-icon-button md-suffix (click)="onDoneEditing(tag.id, newName.value)">
+    <md-icon>done</md-icon>
+  </md-icon-button>
+</md-input>
+<div style="margin-left: auto">
+  <md-icon-button *ngIf="!editMode" (click)="editMode = true">
+    <md-icon>create</md-icon>
+  </md-icon-button>
+  <md-icon-button (click)="deleteTag.emit(tag)">
+    <md-icon>delete</md-icon>
+  </md-icon-button>
+  <md-icon-button (click)="showTagInfo.emit(tag)">
+    <md-icon>info_outline</md-icon>
+  </md-icon-button>
+</div>
+</md-list-item>

@@ -1,0 +1,2 @@
+<md-input #newTagName type="text" placeholder="New tag"></md-input>
+<button md-button (click)="addTag.emit(newTagName.value); newTagName.value = ''">Add</button>

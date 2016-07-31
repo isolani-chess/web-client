@@ -2,12 +2,16 @@ import { Color } from 'chess-es6.js/color';
 import { PieceType } from 'chess-es6.js/piece_type';
 
 export function chess2groundColor(color: string): string {
-  if (color === Color.WHITE) return 'white';
+  if (color === Color.WHITE) {
+    return 'white';
+  }
   return 'black';
 }
 
 export function ground2chessColor(color: string): string {
-  if (color === 'white') return Color.WHITE;
+  if (color === 'white') {
+    return Color.WHITE;
+  }
   return Color.BLACK;
 }
 

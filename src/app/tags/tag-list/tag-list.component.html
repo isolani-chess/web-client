@@ -1,0 +1,5 @@
+<md-list>
+  <app-tag-item *ngFor="let tag of tags?.tags" [tag]="tag"
+                (changeTagName)="changeTagName.emit($event)"
+                (deleteTag)="deleteTag.emit($event)"></app-tag-item>
+</md-list>

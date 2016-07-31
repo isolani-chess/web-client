@@ -12,6 +12,7 @@ import {
   REMOVE_TAG,
   CHANGE_TAG_OWNER,
   CHANGE_TAG_NAME,
+  REPLACE_TAGS,
   TagState
 } from './tags.reducer';
 import { Tag } from './tag';
@@ -161,6 +162,38 @@ describe('Tag reducer', () => {
     expect(tags(state, {
       type: CHANGE_TAG_NAME,
       payload: {id: 2, name: 'my second test tag'}
+    })).toEqual(expected);
+  });
+
+  it('should replace the tag list', () => {
+    const state: TagState = {
+      isFetching: false,
+      tags: [
+        {
+          id: 1,
+          ownerId: 3,
+          name: 'my test tag'
+        }
+      ]
+    };
+    const expected: TagState = {
+      isFetching: false,
+      tags: [
+        {
+          id: 1,
+          ownerId: 2,
+          name: 'my changed test tag'
+        },
+        {
+          id: 2,
+          ownerId: 11,
+          name: 'new tag'
+        }
+      ]
+    };
+    expect(tags(state, {
+      type: REPLACE_TAGS,
+      payload: expected.tags
     })).toEqual(expected);
   });
 });

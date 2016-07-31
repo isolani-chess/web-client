@@ -1,23 +1,30 @@
 /* tslint:disable:no-unused-variable */
 
-import {
-  beforeEach, beforeEachProviders,
-  describe, xdescribe,
-  expect, it, xit,
-  async, inject
-} from '@angular/core/testing';
+import { addProviders, async, inject } from '@angular/core/testing';
+import { provideStore } from '@ngrx/store';
+import { reducers, HorizonService, TagsApiService, TagEffectsService } from './shared';
+import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
 
-beforeEachProviders(() => [AppComponent]);
-
 describe('App: WebChessClient', () => {
-  it('should create the app',
-      inject([AppComponent], (app: AppComponent) => {
-    expect(app).toBeTruthy();
-  }));
+  const tagsApi = {
+    tags: {
+      watch: () => Observable.create(subscriber => {})
+    },
+    store: () => true,
+    remove: () => true,
+    update: () => true
+  };
+  beforeEach(() => {
+    addProviders([
+      AppComponent,
+      { provide: TagsApiService, useValue: tagsApi },
+      provideStore(reducers)
+    ]);
+  });
 
-  it('should have as title \'app works!\'',
-      inject([AppComponent], (app: AppComponent) => {
-    expect(app.title).toEqual('app works!');
-  }));
+  it('should create the app',
+    inject([AppComponent], (app: AppComponent) => {
+      expect(app).toBeTruthy();
+    }));
 });

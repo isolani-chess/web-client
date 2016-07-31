@@ -11,6 +11,9 @@ export const REMOVE_GAME = 'REMOVE_GAME';
 export const CHANGE_GAME_OWNER = 'CHANGE_GAME_OWNER';
 export const ADD_GAME_TAG = 'ADD_GAME_TAG';
 export const REMOVE_GAME_TAG = 'REMOVE_GAME_TAG';
+export const FETCH_GAMES = 'FETCH_GAMES';
+export const LOAD_GAMES = 'LOAD_GAMES';
+export const SAVE_GAME_SUCCESS = 'SAVE_GAME_SUCCESS';
 
 export function games(state: GameState = {
                         isFetching: false,
@@ -18,6 +21,15 @@ export function games(state: GameState = {
                       },
                       action: Action): GameState {
   switch (action.type) {
+  case FETCH_GAMES:
+    return Object.assign({}, state, {
+      isFetching: true
+    });
+  case LOAD_GAMES:
+    return Object.assign({}, state, {
+      isFetching: false,
+      games: gameList(state.games, action)
+    });
   case ADD_GAME:
     return Object.assign({}, state, {
       games: gameList(state.games, action)
@@ -38,6 +50,10 @@ export function games(state: GameState = {
     return Object.assign({}, state, {
       games: gameList(state.games, action)
     });
+  case SAVE_GAME_SUCCESS:
+    return Object.assign({}, state, {
+      games: gameList(state.games, action)
+    });
   default:
     return state;
   }
@@ -45,6 +61,8 @@ export function games(state: GameState = {
 
 function gameList(state: Game[], action: Action): Game[] {
   switch (action.type) {
+  case LOAD_GAMES:
+    return state.concat(action.payload);
   case ADD_GAME:
     return state.concat(action.payload);
   case REMOVE_GAME:
@@ -81,6 +99,14 @@ function gameList(state: Game[], action: Action): Game[] {
       }
       return game;
     });
+  case SAVE_GAME_SUCCESS:
+    return state.map((game) => {
+      if (game.id === action.payload.id
+       || game.localId === action.payload.localId) {
+        return gameDetail(game, action);
+      }
+      return game;
+    });
   default:
     return state;
   }
@@ -89,23 +115,35 @@ function gameList(state: Game[], action: Action): Game[] {
 function gameDetail(state: Game, action: Action): Game {
   switch (action.type) {
   case CHANGE_GAME_OWNER:
-    return Object.assign({}, state, {ownerId: action.payload});
+    state = Object.assign({}, state, {ownerId: action.payload});
+    break;
   case ADD_GAME_TAG:
     // only concat if there are already tags, otherwise there will be an undefined in the array
     if (state.tags !== undefined) {
-      return Object.assign({}, state, {tags: state.tags.concat(action.payload)});
+      state = Object.assign({}, state, {tags: state.tags.concat(action.payload)});
+    } else {
+      state = Object.assign({}, state, {tags: [action.payload]});
     }
-    return Object.assign({}, state, {tags: [action.payload]});
+    break;
   case REMOVE_GAME_TAG:
     let tags = state.tags.filter((tag) => tag !== action.payload);
     // remove tags property if the last tag was just deleted
     if (tags.length === 0) {
-      return removeKeyFromObject(state, 'tags');
+      state = removeKeyFromObject(state, 'tags');
+    } else {
+      state = Object.assign({}, state, {tags: tags});
     }
-    return Object.assign({}, state, {tags: tags});
+    break;
+  case SAVE_GAME_SUCCESS:
+    if (action.payload.setId) {
+      state = Object.assign({}, state, {id: action.payload.setId});
+    }
+    return Object.assign({}, state, {unsavedChanges: false});
   default:
     return state;
   }
+  // if no action matched, function has returned already, so if this is reached, some action was successfully applied
+  return Object.assign({}, state, {unsavedChanges: true});
 }
 
 /**
