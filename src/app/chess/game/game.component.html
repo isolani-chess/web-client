@@ -1,0 +1,17 @@
+<div id="boardContainer">
+  <app-chess-board #chessBoard></app-chess-board>
+</div>
+<div id="pgnContainer">
+  <app-pgn></app-pgn>
+</div>
+<div id="controls">
+  <button md-icon-button (click)="chessBoard.back()">
+    <md-icon>chevron_left</md-icon>
+  </button>
+  <button md-icon-button (click)="chessBoard.rotateBoard()">
+    <md-icon>swap_vert</md-icon>
+  </button>
+  <button md-icon-button (click)="chessBoard.forward()">
+    <md-icon>chevron_right</md-icon>
+  </button>
+</div>

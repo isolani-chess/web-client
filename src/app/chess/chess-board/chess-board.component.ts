@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Flags } from 'chess-es6.js/flags';
 import { Move } from 'chess-es6.js/move';
 import { PieceType } from 'chess-es6.js/piece_type';
@@ -23,7 +23,7 @@ export class ChessBoardComponent implements AfterViewInit {
       free: false
     },
     events: {
-      move: (orig, dest, capturedPiece) => { this.onBoardMove(orig, dest, capturedPiece) }
+      move: (orig, dest, capturedPiece) => this.onBoardMove(orig, dest, capturedPiece)
     }
   };
   constructor(private cdRef: ChangeDetectorRef, private chessService: ChessService) { }
@@ -76,8 +76,8 @@ export class ChessBoardComponent implements AfterViewInit {
   }
 
   private updatePosition() {
-    var array = {};
-    for (var square in Move.SQUARES) {
+    let array = {};
+    for (let square of Move.SQUARES_LOOKUP) {
       array[square] = this.chessService.chess2groundPiece(this.chessService.chess.get(square));
     }
     this.ground.setPieces(array);
@@ -94,7 +94,10 @@ export class ChessBoardComponent implements AfterViewInit {
     let oldMove = this.chessService.chess.currentGame.currentVariation.undoCurrentMove();
 
     // redo the altered move:
-    this.chessService.chess.makeMoveFromAlgebraic(this.chessService.squareToAlgebraic(oldMove.from), this.chessService.squareToAlgebraic(oldMove.to), pieceType);
+    this.chessService.chess.makeMoveFromAlgebraic(
+      this.chessService.squareToAlgebraic(oldMove.from),
+      this.chessService.squareToAlgebraic(oldMove.to),
+      pieceType);
 
     this.updatePosition();
     // update legal moves (might have changed because the new piece gives check/...

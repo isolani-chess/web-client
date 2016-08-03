@@ -12,7 +12,7 @@ import { TagListComponent } from './tags/tag-list';
 import { AddTagComponent } from './tags/add-tag';
 import { GameListComponent } from './games/game-list';
 import { AddGameComponent } from './games/add-game';
-import { ChessBoardComponent } from './chess/chess-board';
+import { GameComponent } from './chess/game';
 import { ChessService } from './chess/shared';
 import { AppState,
          TagsApiService,
@@ -38,7 +38,7 @@ import { AppState,
     AddTagComponent,
     GameListComponent,
     AddGameComponent,
-    ChessBoardComponent
+    GameComponent
   ],
   providers: [
     ChessService,

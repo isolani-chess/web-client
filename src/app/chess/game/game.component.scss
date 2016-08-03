@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+#boardContainer {
+  width: 70vmin;
+  float: left;
+}
+
+#controls {
+  clear: left;
+}
+
+#pgnContainer {
+  float: right;
+  width: calc(100% - 70vmin);
+}
