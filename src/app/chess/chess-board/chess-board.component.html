@@ -1,0 +1,9 @@
+<div id="chessgroundContainer" style="float: left">
+    <div class="chessground blue cburnett" #chessground></div>
+
+    <div id="promotionChoice" *ngIf="startedPromotion">
+        <div id="promotionRook" [class]="getFullNotTurnColor()" (click)="setPromotion('rook')"></div>
+        <div id="promotionBishop" [class]="getFullNotTurnColor()" (click)="setPromotion('bishop')"></div>
+        <div id="promotionKnight" [class]="getFullNotTurnColor()" (click)="setPromotion('knight')"></div>
+    </div>
+</div>

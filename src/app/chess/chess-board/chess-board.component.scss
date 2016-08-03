@@ -1,0 +1,58 @@
+:host {
+  width: 100%;
+  padding-bottom: 100%;
+  display: block;
+  position: relative;
+}
+
+.chessground {
+  height: 100%;
+}
+
+#chessgroundContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#promotionChoice {
+  width: 50px;
+  position: absolute;
+  right: -50px;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+
+  div {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+
+  #promotionQueen.white {
+    background-image: url('chessground-assets/images/pieces/cburnett/wQ.svg');
+  }
+  #promotionRook.white {
+    background-image: url('chessground-assets/images/pieces/cburnett/wR.svg');
+  }
+  #promotionBishop.white {
+    background-image: url('chessground-assets/images/pieces/cburnett/wB.svg');
+  }
+  #promotionKnight.white {
+    background-image: url('chessground-assets/images/pieces/cburnett/wN.svg');
+  }
+  #promotionQueen.black {
+    background-image: url('chessground-assets/images/pieces/cburnett/bQ.svg');
+  }
+  #promotionRook.black {
+    background-image: url('chessground-assets/images/pieces/cburnett/bR.svg');
+  }
+  #promotionBishop.black {
+    background-image: url('chessground-assets/images/pieces/cburnett/bB.svg');
+  }
+  #promotionKnight.black {
+    background-image: url('chessground-assets/images/pieces/cburnett/bN.svg');
+  }
+}
