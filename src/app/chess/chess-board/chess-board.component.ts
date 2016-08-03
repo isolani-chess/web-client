@@ -77,7 +77,7 @@ export class ChessBoardComponent implements AfterViewInit {
 
   private updatePosition() {
     let array = {};
-    for (let square of Move.SQUARES_LOOKUP) {
+    for (let square in Move.SQUARES) {
       array[square] = this.chessService.chess2groundPiece(this.chessService.chess.get(square));
     }
     this.ground.setPieces(array);

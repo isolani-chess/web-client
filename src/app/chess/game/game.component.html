@@ -2,7 +2,7 @@
   <app-chess-board #chessBoard></app-chess-board>
 </div>
 <div id="pgnContainer">
-  <app-pgn></app-pgn>
+  <app-pgn (updatePosition)="chessBoard.update()"></app-pgn>
 </div>
 <div id="controls">
   <button md-icon-button (click)="chessBoard.back()">
